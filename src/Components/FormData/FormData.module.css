@@ -1,0 +1,316 @@
+.formTitle {
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 30px;
+}
+.divider > div {
+  width: 100%;
+}
+.dataInputForm {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.dataInputForm input,
+textarea {
+  display: inline-block;
+  width: 65%;
+}
+
+.inputName label,
+.inputId label,
+.inputPrice label,
+.inputQuantity label,
+.inputDate label,
+.inputDesc label,
+.inputColor label {
+  display: inline-block;
+  width: 30%;
+  text-align: end;
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.inputName input,
+.inputId input,
+.inputPrice input,
+.inputQuantity input,
+.inputDate input,
+.inputColor input {
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+}
+.sizeSelector {
+  font-size: 18px;
+  margin-top: 16px;
+  display: flex;
+  white-space: nowrap;
+  gap: 16px;
+}
+
+.sizeSelector > label {
+  width: 30%;
+  display: block;
+  text-align: end;
+}
+
+.sizeSelector > div {
+  display: flex;
+
+  & label {
+    width: unset;
+    display: block;
+  }
+  & input {
+    width: unset;
+    display: block;
+    margin-right: 4px;
+  }
+}
+
+.terms input,
+.terms label {
+  width: unset;
+}
+.terms input {
+  margin-right: 8px;
+}
+
+.inputName,
+.inputId,
+.inputPrice,
+.inputQuantity,
+.inputDate,
+.inputDesc,
+.inputColor {
+  margin-top: 16px;
+}
+
+.inputDesc {
+  display: flex;
+}
+.inputDesc textarea {
+  outline: none;
+  border: none;
+  font-size: 18px;
+  padding: 8px;
+}
+.inputColor select {
+  font-size: 18px;
+  padding: 5px 8px;
+  border: none;
+  outline: none;
+  width: 65%;
+  border-radius: 4px;
+}
+
+.inputBtn {
+  width: 100%;
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+  & div {
+    width: 30%;
+  }
+  & input {
+    width: 65%;
+    font-size: 18px;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+  }
+}
+
+.inputDate .calInput {
+  width: 38px;
+  opacity: 0;
+}
+.inputDate > div {
+  position: relative;
+  isolation: isolate;
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 4px;
+  width: 65%;
+}
+
+.inputDate .calShow {
+  pointer-events: none;
+  background: transparent;
+}
+.calIcon {
+  color: black;
+  font-size: 28px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 8px;
+  z-index: -1;
+}
+
+.terms {
+  margin-top: 16px;
+  display: flex;
+  justify-content: end;
+}
+.terms div {
+  width: 68%;
+}
+
+/* responsive mobile*/
+
+@media (max-width: 991.99px) {
+  .formTitle {
+    font-size: 48px;
+  }
+  .dataInputForm {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .inputName,
+  .inputId,
+  .inputPrice,
+  .inputQuantity,
+  .inputDate,
+  .inputDesc,
+  .inputColor {
+    display: flex;
+    flex-direction: column;
+  }
+  .inputName label,
+  .inputId label,
+  .inputPrice label,
+  .inputQuantity label,
+  .inputDate label,
+  .inputDesc label,
+  .inputColor label {
+    width: 100%;
+    text-align: left;
+    font-size: 32px;
+    margin-bottom: 4px;
+  }
+  .inputName input,
+  .inputId input,
+  .inputPrice input,
+  .inputQuantity input,
+  .inputDate input,
+  .inputDesc input,
+  .inputColor input,
+  .sizeSelector input {
+    font-size: 30px;
+  }
+  .sizeSelector {
+    font-size: 32px;
+  }
+  .sizeSelector > label {
+    width: unset;
+  }
+
+  .dataInputForm input,
+  textarea {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 8px;
+  }
+  .terms div {
+    display: flex;
+    white-space: nowrap;
+    width: 100%;
+  }
+  .terms input {
+    width: unset;
+  }
+
+  .inputColor select {
+    width: 100%;
+    font-size: 32px;
+    margin-top: 8px;
+  }
+  .inputDesc label {
+    margin-top: 16px;
+  }
+  .inputColor label {
+    margin-top: 12px;
+  }
+
+  .inputDate input {
+    width: 65%;
+    margin-bottom: unset;
+  }
+
+  .inputDate > div {
+    width: 100%;
+  }
+
+  .inputBtn {
+    display: block;
+    gap: unset;
+    & div {
+      display: none;
+    }
+    & input {
+      width: 100%;
+      font-size: 32px;
+    }
+  }
+
+  .calIcon {
+    font-size: 36px;
+  }
+  .inputDate .calShow {
+    margin-left: 10px;
+  }
+
+  .inputDesc textarea {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 767.99px) {
+  .formTitle {
+    font-size: 30px;
+  }
+  .inputName label,
+  .inputId label,
+  .inputPrice label,
+  .inputQuantity label,
+  .inputDate label,
+  .inputDesc label,
+  .inputColor label {
+    font-size: 22px;
+  }
+  .inputName input,
+  .inputId input,
+  .inputPrice input,
+  .inputQuantity input,
+  .inputDate input,
+  .inputDesc input,
+  .inputColor input {
+    font-size: 20px;
+  }
+  .sizeSelector {
+    font-size: 22px;
+  }
+
+  .inputColor select {
+    font-size: 22px;
+  }
+  .inputColor option {
+    font-size: 16px;
+  }
+
+  .inputBtn {
+    & input {
+      font-size: 22px;
+    }
+  }
+
+  .calIcon {
+    font-size: 32px;
+  }
+  .inputDesc textarea {
+    font-size: 18px;
+  }
+}
