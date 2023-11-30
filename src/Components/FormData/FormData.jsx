@@ -20,22 +20,14 @@ import {
   leftInput,
   formContainer,
 } from "./FormData.module.css";
-import { useState } from "react";
 
 export default function FormData({
   handleSubmit,
   TnC,
   setTnC,
   colorsSet: { color, setColor, colors },
+  selectedDate: { currentDate, selectedDate, setSelectedDate },
 }) {
-  const currentDate = [
-    new Date().getDate(),
-    new Date().getMonth() + 1,
-    new Date().getFullYear(),
-  ].join("-");
-
-  const [selectedDate, setSelectedDate] = useState(currentDate);
-
   return (
     <div className={formContainer}>
       <h1 className={formTitle}>Enter Your Desire Data</h1>
@@ -134,15 +126,15 @@ export default function FormData({
           <div className={sizeSelector}>
             <label htmlFor="">Select Size:</label>
             <div>
-              <input type="radio" name="size" value="m" id="m" />
+              <input type="radio" name="size" value="M" id="m" />
               <label htmlFor="m"> (M)</label>
             </div>
             <div>
-              <input type="radio" name="size" value="l" id="l" />
+              <input type="radio" name="size" value="L" id="l" />
               <label htmlFor="l"> (L)</label>
             </div>
             <div>
-              <input type="radio" name="size" value="xl" id="xl" />
+              <input type="radio" name="size" value="XL" id="xl" />
               <label htmlFor="xl"> (XL)</label>
             </div>
           </div>
@@ -171,24 +163,6 @@ export default function FormData({
                   {color}
                 </option>
               ))}
-              {/* <option
-                defaultValue="none"
-                selected
-                disabled
-                hidden
-                placeholder="Choose a color"
-              >
-                Choose a color
-              </option>
-              <option style={{ color: "red" }} value="Red">
-                Red
-              </option>
-              <option style={{ color: "blue" }} value="Blue">
-                Blue
-              </option>
-              <option style={{ color: "green" }} value="Green">
-                Green
-              </option> */}
             </select>
             <div className={terms}>
               <div>

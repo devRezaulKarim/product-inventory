@@ -1,0 +1,66 @@
+:root {
+  --mint-green: #bee9e8ff;
+  --moonstone: #62b6cbff;
+  --indigo-dye: #1b4965ff;
+  --columbia-blue: #cae9ffff;
+  --picton-blue: #5fa8d3ff;
+}
+
+table,
+th,
+td {
+  border: 1px solid var(--indigo-dye);
+  border-collapse: collapse;
+}
+
+.tableContainer {
+  margin-top: 16px;
+  padding: 20px;
+  background: var(--columbia-blue);
+}
+
+.tableWrapper th {
+  height: 24px;
+}
+
+.tableWrapper th:first-child {
+  width: 8%;
+}
+.tableWrapper th:nth-child(2) {
+  width: 12%;
+}
+
+.tableWrapper th:nth-child(3) {
+  width: 8%;
+}
+.tableWrapper th:nth-child(4) {
+  width: 7%;
+}
+
+.tableWrapper th:nth-child(5) {
+  width: 5%;
+}
+.tableWrapper th:nth-child(6) {
+  width: 8%;
+}
+.tableWrapper th:nth-child(7) {
+  width: 15%;
+}
+.tableWrapper th:last-child {
+  width: 6%;
+}
+
+td {
+  text-align: center;
+  font-size: 17px;
+  word-wrap: break-word;
+  word-break: break-all;
+  table-layout: fixed;
+}
+.tableWrapper td:nth-child(8) {
+  text-align: justify;
+  padding: auto 8px;
+}
+.tableWrapper td div {
+  padding: 5px;
+}

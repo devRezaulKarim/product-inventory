@@ -1,12 +1,24 @@
-import { container } from "./Home.module.css";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { container, emptyMessage } from "./Home.module.css";
 import FormData from "../FormData/FormData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ClothTableDesktop from "../ClothTableDesktop/ClothTableDesktop";
-// import ClothTable from "../ClothTable/ClothTable";
+
+const getCloths = () => {
+  return JSON.parse(localStorage.getItem("cloths")) ?? [];
+};
 
 export default function Home() {
+  const currentDate = [
+    new Date().getDate(),
+    new Date().getMonth() + 1,
+    new Date().getFullYear(),
+  ].join("-");
+
+  const [selectedDate, setSelectedDate] = useState(currentDate);
+
   const [TnC, setTnC] = useState(false);
-  const [cloths, setCloths] = useState([]);
+  const [cloths, setCloths] = useState(getCloths);
   const colors = ["Choose a color", "Red", "Green", "Blue"];
   const [color, setColor] = useState(colors[0]);
 
@@ -44,6 +56,8 @@ export default function Home() {
       alert("You have to choose an unique id number!");
     } else {
       setCloths([...cloths, elementObject]);
+
+      //Clearing the input field
       allElements.forEach((e) => {
         if (e.type == "text") {
           e.value = "";
@@ -61,6 +75,11 @@ export default function Home() {
     }
   };
 
+  useEffect(() => {
+    localStorage.setItem("cloths", JSON.stringify(cloths));
+    setSelectedDate(currentDate);
+  }, [cloths]);
+
   return (
     <div className={container}>
       <FormData
@@ -68,13 +87,19 @@ export default function Home() {
         TnC={TnC}
         setTnC={setTnC}
         colorsSet={{ color, colors, setColor }}
+        selectedDate={{ currentDate, selectedDate, setSelectedDate }}
       />
+
       {cloths.length > 0 ? (
-        cloths.map((cloth) => (
-          <ClothTableDesktop key={cloth.id} cloth={cloth} />
-        ))
+        <ClothTableDesktop cloths={cloths} />
       ) : (
-        <h1>The inventory is empty!!!</h1>
+        <div className={emptyMessage}>
+          <h1>The inventory is empty!!!</h1>
+          <img
+            src="https://wherethetradebuys.com.au/wp-content/uploads/2018/12/icon-box-gift.gif"
+            alt=""
+          />
+        </div>
       )}
     </div>
   );

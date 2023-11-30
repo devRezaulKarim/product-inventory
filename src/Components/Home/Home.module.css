@@ -18,3 +18,11 @@
   max-width: 1080px;
   margin: auto;
 }
+.emptyMessage {
+  text-align: center;
+  margin-top: 16px;
+  color: red;
+}
+.emptyMessage img {
+  width: 200px;
+}
