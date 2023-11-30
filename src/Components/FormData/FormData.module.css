@@ -90,6 +90,7 @@ textarea {
 }
 .terms input {
   margin-right: 8px;
+  box-shadow: unset;
 }
 
 .inputName,
@@ -193,6 +194,9 @@ textarea {
 .terms div {
   width: 68%;
 }
+#leftInput > div {
+  margin-top: 22px;
+}
 
 /* responsive mobile*/
 
@@ -254,7 +258,8 @@ textarea {
     width: 100%;
   }
   .terms input {
-    width: unset;
+    margin-top: 10px;
+    width: 24px;
   }
 
   .inputColor select {

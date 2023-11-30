@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { FaRegCalendarAlt } from "react-icons/fa";
 import {
   divider,
@@ -16,30 +17,32 @@ import {
   calInput,
   calShow,
   formTitle,
+  leftInput,
 } from "./FormData.module.css";
 import { useState } from "react";
 
-export default function FormData() {
+export default function FormData({ handleSubmit }) {
   const currentDate = [
     new Date().getDate(),
     new Date().getMonth() + 1,
     new Date().getFullYear(),
   ].join("-");
-  console.log(currentDate);
+
   const [selectedDate, setSelectedDate] = useState(currentDate);
+  const [TnC, setTnC] = useState(false);
   const [color, setColor] = useState(null);
 
   return (
     <div>
       <h1 className={formTitle}>Enter Your Desire Data</h1>
-      <form action="" className={dataInputForm}>
-        <div className={divider}>
+      <form onSubmit={handleSubmit} action="" className={dataInputForm}>
+        <div className={divider} id={leftInput}>
           <div className={inputName}>
             <label htmlFor="name">Cloth Name:</label>
             <input
               maxLength="35"
               type="text"
-              name=""
+              name="name"
               id="name"
               placeholder="Cloth Name"
               required
@@ -51,7 +54,7 @@ export default function FormData() {
             <input
               maxLength="10"
               type="text"
-              name=""
+              name="id"
               id="id"
               placeholder="Cloth Id"
               required
@@ -64,7 +67,7 @@ export default function FormData() {
               min="1"
               max="99999999"
               type="number"
-              name=""
+              name="price"
               id="price"
               placeholder="Price (max: 99999999)"
               required
@@ -77,7 +80,7 @@ export default function FormData() {
               min="1"
               max="999"
               type="number"
-              name=""
+              name="quantity"
               id="quantity"
               placeholder="Quantity (max: 999)"
               required
@@ -99,9 +102,10 @@ export default function FormData() {
               />
               <input
                 type="text"
-                name=""
+                name="date"
                 id=""
                 className={calShow}
+                readOnly
                 value={selectedDate || "11-11-11"}
               />
               <FaRegCalendarAlt className={calIcon} />
@@ -114,7 +118,7 @@ export default function FormData() {
           <div className={inputDesc}>
             <label htmlFor="desc">Description:</label>
             <textarea
-              name=""
+              name="desc"
               id="desc"
               cols="30"
               rows="5"
@@ -144,7 +148,7 @@ export default function FormData() {
             <select
               onChange={(e) => setColor(e.target.value)}
               style={{ color: `${color}` }}
-              name=""
+              name="color"
               id="color"
             >
               <option value="none" selected disabled hidden>
@@ -162,14 +166,21 @@ export default function FormData() {
             </select>
             <div className={terms}>
               <div>
-                <input type="checkbox" name="TnC" id="TnC" />
-                <label htmlFor="TnC">Accept terms & condition</label>
+                <input
+                  onChange={() => setTnC(!TnC)}
+                  type="checkbox"
+                  name="TnC"
+                  id="TnC"
+                />
+                <label style={{ color: TnC ? "black" : "red" }} htmlFor="TnC">
+                  Accept terms & condition
+                </label>
               </div>
             </div>
           </div>
           <div className={inputBtn}>
             <div></div>
-            <input type="submit" value="Add to Inventory" />
+            <input disabled={!TnC} type="submit" value="Add to Inventory" />
           </div>
         </div>
       </form>
