@@ -6,8 +6,16 @@
   font-family: "Josefin Sans", sans-serif;
 }
 
+:root {
+  --mint-green: #bee9e8ff;
+  --moonstone: #62b6cbff;
+  --indigo-dye: #1b4965ff;
+  --columbia-blue: #cae9ffff;
+  --picton-blue: #5fa8d3ff;
+}
+
 .container {
-  background-color: lightgrey;
+  background-color: var(--columbia-blue);
   max-width: 1080px;
   margin: auto;
   padding: 20px;

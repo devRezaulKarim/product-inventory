@@ -36,22 +36,52 @@ export default function FormData() {
         <div className={divider}>
           <div className={inputName}>
             <label htmlFor="name">Cloth Name:</label>
-            <input type="text" name="" id="name" />
+            <input
+              maxLength="35"
+              type="text"
+              name=""
+              id="name"
+              placeholder="Cloth Name"
+              required
+            />
           </div>
 
           <div className={inputId}>
             <label htmlFor="id">Cloth Id:</label>
-            <input type="text" name="" id="id" />
+            <input
+              maxLength="10"
+              type="text"
+              name=""
+              id="id"
+              placeholder="Cloth Id"
+              required
+            />
           </div>
 
           <div className={inputPrice}>
             <label htmlFor="price">Price:</label>
-            <input type="number" name="" id="price" />
+            <input
+              min="1"
+              max="99999999"
+              type="number"
+              name=""
+              id="price"
+              placeholder="Price (max: 99999999)"
+              required
+            />
           </div>
 
           <div className={inputQuantity}>
             <label htmlFor="quantity">Quantity:</label>
-            <input type="text" name="" id="quantity" />
+            <input
+              min="1"
+              max="999"
+              type="number"
+              name=""
+              id="quantity"
+              placeholder="Quantity (max: 999)"
+              required
+            />
           </div>
 
           <div className={inputDate}>
@@ -83,7 +113,14 @@ export default function FormData() {
         <div className={divider}>
           <div className={inputDesc}>
             <label htmlFor="desc">Description:</label>
-            <textarea name="" id="desc" cols="30" rows="5"></textarea>
+            <textarea
+              name=""
+              id="desc"
+              cols="30"
+              rows="5"
+              placeholder="Description"
+              required
+            ></textarea>
           </div>
 
           <div className={sizeSelector}>
