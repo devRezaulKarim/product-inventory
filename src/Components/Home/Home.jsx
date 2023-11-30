@@ -7,7 +7,10 @@ import ClothTableDesktop from "../ClothTableDesktop/ClothTableDesktop";
 export default function Home() {
   const [TnC, setTnC] = useState(false);
   const [cloths, setCloths] = useState([]);
+  const colors = ["Choose a color", "Red", "Green", "Blue"];
+  const [color, setColor] = useState(colors[0]);
 
+  //Submit Handler
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -52,7 +55,7 @@ export default function Home() {
           e.checked = false;
           setTnC(!TnC);
         } else {
-          e.value = "none ";
+          setColor(() => colors[0]);
         }
       });
     }
@@ -60,7 +63,12 @@ export default function Home() {
 
   return (
     <div className={container}>
-      <FormData handleSubmit={handleSubmit} TnC={TnC} setTnC={setTnC} />
+      <FormData
+        handleSubmit={handleSubmit}
+        TnC={TnC}
+        setTnC={setTnC}
+        colorsSet={{ color, colors, setColor }}
+      />
       {cloths.length > 0 ? (
         cloths.map((cloth) => (
           <ClothTableDesktop key={cloth.id} cloth={cloth} />

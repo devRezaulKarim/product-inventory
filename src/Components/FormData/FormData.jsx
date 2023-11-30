@@ -22,7 +22,12 @@ import {
 } from "./FormData.module.css";
 import { useState } from "react";
 
-export default function FormData({ handleSubmit, TnC, setTnC }) {
+export default function FormData({
+  handleSubmit,
+  TnC,
+  setTnC,
+  colorsSet: { color, setColor, colors },
+}) {
   const currentDate = [
     new Date().getDate(),
     new Date().getMonth() + 1,
@@ -30,7 +35,6 @@ export default function FormData({ handleSubmit, TnC, setTnC }) {
   ].join("-");
 
   const [selectedDate, setSelectedDate] = useState(currentDate);
-  const [color, setColor] = useState(null);
 
   return (
     <div className={formContainer}>
@@ -147,11 +151,33 @@ export default function FormData({ handleSubmit, TnC, setTnC }) {
             <label htmlFor="color">Select Color: </label>
             <select
               onChange={(e) => setColor(e.target.value)}
-              style={{ color: `${color}` }}
+              style={{
+                color: `${color === "Choose a color" ? "black" : color}`,
+              }}
               name="color"
               id="color"
+              value={color}
             >
-              <option value="none" selected disabled hidden>
+              {colors.map((color, i) => (
+                <option
+                  key={i}
+                  disabled={i === 0}
+                  hidden={i === 0}
+                  value={color}
+                  style={{
+                    color: `${color}`,
+                  }}
+                >
+                  {color}
+                </option>
+              ))}
+              {/* <option
+                defaultValue="none"
+                selected
+                disabled
+                hidden
+                placeholder="Choose a color"
+              >
                 Choose a color
               </option>
               <option style={{ color: "red" }} value="Red">
@@ -162,7 +188,7 @@ export default function FormData({ handleSubmit, TnC, setTnC }) {
               </option>
               <option style={{ color: "green" }} value="Green">
                 Green
-              </option>
+              </option> */}
             </select>
             <div className={terms}>
               <div>
