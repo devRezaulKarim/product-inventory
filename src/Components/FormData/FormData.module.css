@@ -5,6 +5,11 @@
   --columbia-blue: #cae9ffff;
   --picton-blue: #5fa8d3ff;
 }
+
+.formContainer {
+  background-color: var(--columbia-blue);
+  padding: 20px;
+}
 .formTitle {
   text-align: center;
   margin-bottom: 16px;

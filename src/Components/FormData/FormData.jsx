@@ -18,10 +18,11 @@ import {
   calShow,
   formTitle,
   leftInput,
+  formContainer,
 } from "./FormData.module.css";
 import { useState } from "react";
 
-export default function FormData({ handleSubmit }) {
+export default function FormData({ handleSubmit, TnC, setTnC }) {
   const currentDate = [
     new Date().getDate(),
     new Date().getMonth() + 1,
@@ -29,11 +30,10 @@ export default function FormData({ handleSubmit }) {
   ].join("-");
 
   const [selectedDate, setSelectedDate] = useState(currentDate);
-  const [TnC, setTnC] = useState(false);
   const [color, setColor] = useState(null);
 
   return (
-    <div>
+    <div className={formContainer}>
       <h1 className={formTitle}>Enter Your Desire Data</h1>
       <form onSubmit={handleSubmit} action="" className={dataInputForm}>
         <div className={divider} id={leftInput}>

@@ -1,9 +1,11 @@
 import { container } from "./Home.module.css";
 import FormData from "../FormData/FormData";
 import { useState } from "react";
+import ClothTableDesktop from "../ClothTableDesktop/ClothTableDesktop";
 // import ClothTable from "../ClothTable/ClothTable";
 
 export default function Home() {
+  const [TnC, setTnC] = useState(false);
   const [cloths, setCloths] = useState([]);
 
   const handleSubmit = (e) => {
@@ -39,12 +41,33 @@ export default function Home() {
       alert("You have to choose an unique id number!");
     } else {
       setCloths([...cloths, elementObject]);
+      allElements.forEach((e) => {
+        if (e.type == "text") {
+          e.value = "";
+        } else if (e.type == "number") {
+          e.value = "";
+        } else if (e.tagName == "TEXTAREA") {
+          e.value = "";
+        } else if (e.checked) {
+          e.checked = false;
+          setTnC(!TnC);
+        } else {
+          e.value = "none ";
+        }
+      });
     }
   };
 
   return (
     <div className={container}>
-      <FormData handleSubmit={handleSubmit} />
+      <FormData handleSubmit={handleSubmit} TnC={TnC} setTnC={setTnC} />
+      {cloths.length > 0 ? (
+        cloths.map((cloth) => (
+          <ClothTableDesktop key={cloth.id} cloth={cloth} />
+        ))
+      ) : (
+        <h1>The inventory is empty!!!</h1>
+      )}
     </div>
   );
 }

@@ -15,8 +15,6 @@
 }
 
 .container {
-  background-color: var(--columbia-blue);
   max-width: 1080px;
   margin: auto;
-  padding: 20px;
 }
