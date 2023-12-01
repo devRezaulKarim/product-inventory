@@ -68,6 +68,7 @@ td {
 }
 .removeAllButton {
   height: 50px;
+  max-width: 100%;
   position: relative;
 }
 .removeAllButton button {
@@ -92,12 +93,10 @@ td {
 @keyframes leftRight {
   0%,
   100% {
-    left: 0;
-    /* transform: translateX(0); */
+    transform: translateX(150%);
   }
   50% {
     left: unset;
-    right: 0;
-    /* transform: translateX(980px); */
+    transform: translateX(550%);
   }
 }

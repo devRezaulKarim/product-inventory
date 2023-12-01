@@ -90,7 +90,7 @@ export default function FormData({
                 type="date"
                 name=""
                 id="date"
-                min={currentDate.split("-").reverse().join("-")}
+                max={currentDate.split("-").reverse().join("-")}
                 className={calInput}
                 onChange={(e) =>
                   setSelectedDate(e.target.value.split("-").reverse().join("-"))

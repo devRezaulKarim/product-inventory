@@ -11,12 +11,16 @@ const getCloths = () => {
 export const ClothContext = createContext();
 
 export default function Home() {
-  const currentDate = [
-    new Date().getDate(),
-    new Date().getMonth() + 1,
-    new Date().getFullYear(),
-  ].join("-");
-
+  let date = new Date().getDate();
+  let month = new Date().getMonth() + 1;
+  if (date < 10) {
+    date = "0" + date.toString();
+  }
+  if (month < 10) {
+    month = "0" + date.toString();
+  }
+  const currentDate = [date, month, new Date().getFullYear()].join("-");
+  console.log(date);
   const [selectedDate, setSelectedDate] = useState(currentDate);
 
   const [TnC, setTnC] = useState(false);
