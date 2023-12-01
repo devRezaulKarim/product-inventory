@@ -9,7 +9,7 @@
 table,
 th,
 td {
-  border: 1px solid var(--indigo-dye);
+  border: 1px solid var(--moonstone);
   border-collapse: collapse;
 }
 
@@ -20,7 +20,9 @@ td {
 }
 
 .tableWrapper th {
-  height: 24px;
+  height: 28px;
+  background: var(--indigo-dye);
+  color: var(--mint-green);
 }
 
 .tableWrapper th:first-child {
@@ -31,7 +33,7 @@ td {
 }
 
 .tableWrapper th:nth-child(3) {
-  width: 8%;
+  width: 10%;
 }
 .tableWrapper th:nth-child(4) {
   width: 7%;

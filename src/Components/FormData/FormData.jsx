@@ -102,7 +102,7 @@ export default function FormData({
                 id=""
                 className={calShow}
                 readOnly
-                value={selectedDate || "11-11-11"}
+                value={selectedDate}
               />
               <FaRegCalendarAlt className={calIcon} />
             </div>

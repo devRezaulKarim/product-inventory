@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import ClothRow from "../ClothRow/ClothRow";
-import { tableWrapper,tableContainer } from "./ClothTableDesktop.module.css";
+import { tableWrapper, tableContainer } from "./ClothTableDesktop.module.css";
 
 export default function ClothTableDesktop({ cloths }) {
   return (

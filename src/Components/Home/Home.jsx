@@ -54,14 +54,20 @@ export default function Home() {
       alert("You have to choose color and size both.");
     } else if (existingId.includes(elementObject["id"])) {
       alert("You have to choose an unique id number!");
+    } else if (
+      elementObject["name"].trim().length < 1 ||
+      elementObject["id"].trim().length < 1 ||
+      elementObject["desc"].trim().length < 1
+    ) {
+      alert("You can't  just put only whitespace!");
+    } else if (!isNaN(Number(elementObject["name"]))) {
+      alert("You can't just put a number as a name!");
     } else {
       setCloths([...cloths, elementObject]);
 
       //Clearing the input field
       allElements.forEach((e) => {
-        if (e.type == "text") {
-          e.value = "";
-        } else if (e.type == "number") {
+        if (e.type == "text" || e.type == "number") {
           e.value = "";
         } else if (e.tagName == "TEXTAREA") {
           e.value = "";
