@@ -1,9 +1,16 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import { useContext } from "react";
 import ClothRow from "../ClothRow/ClothRow";
-import { tableWrapper, tableContainer } from "./ClothTableDesktop.module.css";
+import {
+  tableWrapper,
+  tableContainer,
+  removeAllButton,
+} from "./ClothTableDesktop.module.css";
+import { ClothContext } from "../Home/Home";
 
-export default function ClothTableDesktop({ cloths }) {
+export default function ClothTableDesktop() {
+  const { cloths, setCloths } = useContext(ClothContext);
   return (
     <div className={tableContainer}>
       <div className={tableWrapper}>
@@ -27,6 +34,9 @@ export default function ClothTableDesktop({ cloths }) {
             ))}
           </tbody>
         </table>
+        <div className={removeAllButton}>
+          <button onClick={() => setCloths([])}>Remove All</button>
+        </div>
       </div>
     </div>
   );

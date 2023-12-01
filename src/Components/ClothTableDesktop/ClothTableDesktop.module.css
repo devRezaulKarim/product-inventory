@@ -66,3 +66,38 @@ td {
 .tableWrapper td div {
   padding: 5px;
 }
+.removeAllButton {
+  height: 50px;
+  position: relative;
+}
+.removeAllButton button {
+  background: red;
+  color: var(--columbia-blue);
+  font-size: 20px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 16px;
+  animation-name: leftRight;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+  position: absolute;
+  &:hover {
+    box-shadow: 0 0 4px 4px #fff;
+    background: rgba(255, 0, 0, 0.719);
+  }
+}
+
+@keyframes leftRight {
+  0%,
+  100% {
+    left: 0;
+    /* transform: translateX(0); */
+  }
+  50% {
+    left: unset;
+    right: 0;
+    /* transform: translateX(980px); */
+  }
+}

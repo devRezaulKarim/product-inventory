@@ -1,37 +1,45 @@
 /* eslint-disable react/prop-types */
-// import { style } from "./ClothRow.module.css";
+import { useContext } from "react";
 import { MdDelete } from "react-icons/md";
+import { ClothContext } from "../Home/Home";
 
 export default function ClothRow({ cloth }) {
+  const { cloths, setCloths } = useContext(ClothContext);
+  const { id, name, price, quantity, size, color, date, desc } = cloth;
+
+  const handleSingleDelete = (id) => {
+    setCloths(() => cloths.filter((cloth) => cloth.id !== id));
+  };
+
   return (
     <tr>
       <td>
-        <div>{cloth.id}</div>
+        <div>{id}</div>
       </td>
       <td>
-        <div>{cloth.name}</div>
+        <div>{name}</div>
       </td>
       <td>
-        <div>{cloth.price}</div>
+        <div>{price}</div>
       </td>
       <td>
-        <div>{cloth.quantity}</div>
+        <div>{quantity}</div>
       </td>
       <td>
-        <div>{cloth.size}</div>
+        <div>{size}</div>
       </td>
-      <td style={{ color: `${cloth.color}` }}>
+      <td style={{ color: `${color}` }}>
         {" "}
-        <div>{cloth.color}</div>{" "}
+        <div>{color}</div>{" "}
       </td>
       <td>
-        <div>{cloth.date}</div>
+        <div>{date}</div>
       </td>
       <td>
-        <div>{cloth.desc}</div>
+        <div>{desc}</div>
       </td>
       <td>
-        <MdDelete color="red" />
+        <MdDelete onClick={() => handleSingleDelete(id)} color="red" />
       </td>
     </tr>
   );

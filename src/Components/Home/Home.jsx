@@ -1,12 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { container, emptyMessage } from "./Home.module.css";
 import FormData from "../FormData/FormData";
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import ClothTableDesktop from "../ClothTableDesktop/ClothTableDesktop";
 
 const getCloths = () => {
   return JSON.parse(localStorage.getItem("cloths")) ?? [];
 };
+
+export const ClothContext = createContext();
 
 export default function Home() {
   const currentDate = [
@@ -50,7 +52,7 @@ export default function Home() {
       return pre;
     }, []);
 
-    if (elementObject["color"] === "none" || !elementObject["size"]) {
+    if (elementObject["color"] === "Choose a color" || !elementObject["size"]) {
       alert("You have to choose color and size both.");
     } else if (existingId.includes(elementObject["id"])) {
       alert("You have to choose an unique id number!");
@@ -87,26 +89,28 @@ export default function Home() {
   }, [cloths]);
 
   return (
-    <div className={container}>
-      <FormData
-        handleSubmit={handleSubmit}
-        TnC={TnC}
-        setTnC={setTnC}
-        colorsSet={{ color, colors, setColor }}
-        selectedDate={{ currentDate, selectedDate, setSelectedDate }}
-      />
+    <ClothContext.Provider value={{ cloths, setCloths }}>
+      <div className={container}>
+        <FormData
+          handleSubmit={handleSubmit}
+          TnC={TnC}
+          setTnC={setTnC}
+          colorsSet={{ color, colors, setColor }}
+          selectedDate={{ currentDate, selectedDate, setSelectedDate }}
+        />
 
-      {cloths.length > 0 ? (
-        <ClothTableDesktop cloths={cloths} />
-      ) : (
-        <div className={emptyMessage}>
-          <h1>The inventory is empty!!!</h1>
-          <img
-            src="https://wherethetradebuys.com.au/wp-content/uploads/2018/12/icon-box-gift.gif"
-            alt=""
-          />
-        </div>
-      )}
-    </div>
+        {cloths.length > 0 ? (
+          <ClothTableDesktop />
+        ) : (
+          <div className={emptyMessage}>
+            <h1>The inventory is empty!!!</h1>
+            <img
+              src="https://wherethetradebuys.com.au/wp-content/uploads/2018/12/icon-box-gift.gif"
+              alt=""
+            />
+          </div>
+        )}
+      </div>
+    </ClothContext.Provider>
   );
 }
