@@ -17,10 +17,10 @@ export default function Home() {
     date = "0" + date.toString();
   }
   if (month < 10) {
-    month = "0" + date.toString();
+    month = "0" + month.toString();
   }
   const currentDate = [date, month, new Date().getFullYear()].join("-");
-  console.log(date);
+
   const [selectedDate, setSelectedDate] = useState(currentDate);
 
   const [TnC, setTnC] = useState(false);

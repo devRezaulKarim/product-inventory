@@ -20,7 +20,7 @@ export default function ClothRow({ cloth }) {
         <div>{name}</div>
       </td>
       <td>
-        <div>{price}</div>
+        <div>৳{price}</div>
       </td>
       <td>
         <div>{quantity}</div>
